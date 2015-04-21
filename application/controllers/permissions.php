@@ -109,6 +109,7 @@ class Permissions extends CI_Controller {
                 foreach ($acos as $keyc => $aco) :
                     $this->db->set('aro_id', $aro['id']);
                     $this->db->set('aco_id', $aco['id']);
+                    $this->db->set('alias', $aco['model']);
                     if ($aro['foreign_key'] == 1) {
                         $this->db->set('status', 1);
                     } else {
@@ -127,10 +128,36 @@ class Permissions extends CI_Controller {
     public function group_permission() {
         $data['groups'] = $this->__group_aros();
         $data['acos'] = $this->__listing_acos();
-        #echo "<pre>";print_r($group);
+        $data['arosacos'] = $this->__listing_permission();
+        //echo "<pre>";print_r($data['acos']);
         $data['permission'] = $this->__listing_permission();
         $data['main'] = 'permissions/group_permission';
         $this->load->view('layouts/default', $data);
+    }
+
+    /*
+     * ajax_permission
+     */
+
+    public function ajax_permission() {
+        $data = array(
+            'id' => $this->input->post('id'),
+            'status' => $this->input->post('status')
+        );
+        if ($data['status'] == 'allow') {
+            $stat = 1;
+        } else {
+            $stat = 0;
+        }
+        $this->db->where('id', $data['id']);
+        $this->db->set('status', $stat);  //set datetime for modified
+        $this->db->update('aros_acos');
+        $result = array(
+            'status' => $data['status'],
+            'message' => 'The type has been saved',
+            'id' => $data['id']
+        );
+        echo json_encode($result);
     }
 
     /**
@@ -138,9 +165,9 @@ class Permissions extends CI_Controller {
      * @return void
      */
     private function __group_aros() {
-        $this->db->join('groups', 'groups.group_id = aros.foreign_key');        
+        $this->db->join('groups', 'groups.group_id = aros.foreign_key');
         $Q = $this->db->get('aros');
-         if ($Q->num_rows() > 0) {
+        if ($Q->num_rows() > 0) {
             return $Q->result_array();
         }
     }
