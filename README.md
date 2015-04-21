@@ -3,7 +3,7 @@
 # Codeigniter ACL 
 Implmentation an access control list (ACL) in Codeigniter 2
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "acl image")
+![alt text](https://github.com/kpkt/ci_acl/blob/master/img/acl.png "acl image")
 
 #Features
 
