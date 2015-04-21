@@ -5,6 +5,19 @@ Implmentation an access control list (ACL) in Codeigniter 2
 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "acl image")
 
+#Features
+
+*Groups Permissions (Acl).
+*Users Permissions (Acl) - Cooming Soon.
+*Support Multiple Groups for User.
+*User manager.
+*Group manager.
+*ReCaptcha integration. - Cooming Soon.
+*SignUp (Email activation).
+*Reset Password.
+*Custom email templates. - Cooming Soon.
+*Edit Account.
+
 #Database
 ```go
 --
