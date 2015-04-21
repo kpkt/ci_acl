@@ -7,16 +7,11 @@ Implmentation an access control list (ACL) in Codeigniter 2
 
 #Features
 
-*Groups Permissions (Acl).
-*Users Permissions (Acl) - Cooming Soon.
-*Support Multiple Groups for User.
-*User manager.
-*Group manager.
-*ReCaptcha integration. - Cooming Soon.
-*SignUp (Email activation).
-*Reset Password.
-*Custom email templates. - Cooming Soon.
-*Edit Account.
+* Groups Permissions (Acl).
+* Users Permissions (Acl) - Cooming Soon.
+* Support Multiple Groups for User.
+* User manager.
+* Group manager.
 
 #Database
 ```go
