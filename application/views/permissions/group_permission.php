@@ -34,7 +34,7 @@
                     foreach ($arosacos as $key => $value) {
                         if ($value['aco_id'] == $aco['id']) {
                             echo "<td class=\"text-center\">";
-                            echo ($value['status'] ? '<a id="id-' . $value['id'] . '"  class="btn btn-xs btn-success disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a id="id-' . $value['id'] . '" class="btn btn-xs btn-danger allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
+                            echo ($value['status'] ? '<a id="id-' . $value['id'] . '"  class="btn btn-xs btn-allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a id="id-' . $value['id'] . '" class="btn btn-xs btn-disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
                             echo "</td>";
                         }
                     }
@@ -46,18 +46,3 @@
 
     </tbody>
 </table>
-<style>
-    .current {
-        text-decoration: underline;
-        color: green;
-    }
-</style>
-
-<div id="menu">
-    <ul>
-        <li><a id="about-link" class="current" href="#">ABOUT</a></li>
-        <li><a id="events-link" href="#">EVENTS</a></li>
-        <li><a id="reviews-link" href="#">REVIEWS</a></li>
-        <li><a id="contact-link" href="#">CONTACT</a></li>
-    </ul>
-</div>

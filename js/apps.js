@@ -1,37 +1,44 @@
 $(document).ready(function () {
-    $('#menu li a').on('click', function () {
-        $(this).addClass('current');
-        $(this).parent().siblings().find('a').removeClass('current');
-    });
-    $("#acls .allow").click(function () {
-        var id = this.id.split('-');
-        myUpdate(id[1], 'allow');
-        $(this).addClass('disallow');
-        $(this).removeClass('allow');
-        $(this).text('disallow');
-          console.log($(this));
-        //$(this).removeClass('btn-success');
-        //$(this).removeClass('allow');
-        //$(this).addClass('btn-danger');
-        //$(this).addClass('disallow');
-        //console.log($(this).addClass('btn-danger disallow'));
-        //$('#id-' + id[1]).addClass('btn-danger');
 
-    });
-    $('#acls .disallow').click(function () {
+    $(".btn-allow, .btn-disallow").bind('focus, click', function () {
         var id = this.id.split('-');
-        myUpdate(id[1], 'disallow');
-        $(this).addClass('allow');
-        $(this).removeClass('disallow');
-        $(this).text('allow');
-        //$(this).removeClass('btn-danger');
-        //$(this).removeClass('disallow');
-        //$(this).addClass('btn-success');
-        //$(this).addClass('allow');
-        console.log($(this));
-        //$('#id-' + id[1]).addClass('btn-success');
-
+        if ($("#id-" + id[1]).hasClass('btn-allow')) {
+            $("#id-" + id[1]).removeClass('btn-allow').addClass('btn-disallow');
+            myUpdate(id[1], 'disallow');
+        } else {
+            $("#id-" + id[1]).removeClass('btn-disallow').addClass('btn-allow');
+            myUpdate(id[1], 'allow');
+        }
     });
+    /*$(".btn-allow .btn-disallow").focus(function () {
+     $('.btn-allow').click(function () {
+     //console.log($(this).hasClass('btn-allow'));
+     $("#id-" + id[1]).hasClass('btn-allow')
+     disallow(id);
+     }
+     });
+     
+     $('.btn-disallow').click(function () {
+     //console.log($(this).hasClass('btn-disallow'));
+     var id = this.id.split('-');
+     if ($("#id-" + id[1]).hasClass('btn-disallow')) {
+     allow(id);
+     }
+     });
+     });
+     
+     function allow(id) {
+     $("#id-" + id[1]).addClass('btn-allow');
+     $("#id-" + id[1]).removeClass('btn-disallow');
+     myUpdate(id[1], 'allow');
+     //console.log(id[1] + '-allow');
+     }
+     function disallow(id) {
+     $("#id-" + id[1]).addClass('btn-disallow');
+     $("#id-" + id[1]).removeClass('btn-allow');
+     myUpdate(id[1], 'disallow');
+     //console.log(id[1] + '-disallow');
+     }*/
 
     function myUpdate(id, status) {
         jQuery.ajax({
@@ -43,10 +50,10 @@ $(document).ready(function () {
                 'status': status
             },
             success: function (r) {
-                if (r.status == 'disallow') {
-                    //$('#id-' + r.id).addClass('btn-success');
+                if (r.status == 'allow') {
+                    $('#id-' + r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>');
                 } else {
-                    //$('#id-' + r.id).addClass('btn-danger');
+                    $('#id-' + r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
                 }
 
             }

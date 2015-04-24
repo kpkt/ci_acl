@@ -173,6 +173,19 @@ class Permissions extends CI_Controller {
     }
 
     /**
+     * exist aros_acos method     
+     * @return void
+     */
+    private function __exist_arosacos() {
+        $Q = $this->db->get('aros_acos');
+        if ($Q->num_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    /**
      * exist aros method     
      * @return void
      */

@@ -79,3 +79,32 @@ form .error{
         border-bottom: 0;
     }
 }
+
+.btn-allow{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+.btn-disallow{
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+}
+
+.btn-disallow:focus, .btn-allow:focus, .btn-disallow:hover, .btn-allow:hover{
+    color: #fff;
+}
+.btn-disallow > span, .btn-allow > span{
+    color: #fff;
+}
+
+.btn-disallow.active, .btn-disallow.focus, .btn-disallow:active, .btn-disallow:focus, .btn-disallow:hover, .open > .dropdown-toggle.btn-disallow {
+    background-color: #c9302c;
+    border-color: #ac2925;
+    color: #fff;
+}
+.btn-allow.active, .btn-allow.focus, .btn-allow:active, .btn-allow:focus, .btn-allow:hover, .open > .dropdown-toggle.btn-allow {
+    background-color: #449d44;
+    border-color: #398439;
+    color: #fff;
+}
