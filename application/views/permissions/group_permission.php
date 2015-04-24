@@ -9,10 +9,11 @@
         </tr>
         <tr class="warning">
             <td>All</td>
-            <?php foreach ($groups as $key => $value) { ?>
+            <?php foreach ($groups as $key => $value) {
+                ?>
                 <td class="text-center">
-                    <a href="<?php echo base_url("index.php/users/view/"); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-                    <a href="<?php echo base_url("index.php/users/view/"); ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a id="id-<?php echo $value['id'] ?>" href="#" class="btn btn-xs btn-allow-all"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                    <a id="id-<?php echo $value['id'] ?>" href="#" class="btn btn-xs btn-disallow-all"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 </td>
             <?php } ?>
         </tr>
@@ -34,7 +35,7 @@
                     foreach ($arosacos as $key => $value) {
                         if ($value['aco_id'] == $aco['id']) {
                             echo "<td class=\"text-center\">";
-                            echo ($value['status'] ? '<a id="id-' . $value['id'] . '"  class="btn btn-xs btn-allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a id="id-' . $value['id'] . '" class="btn btn-xs btn-disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
+                            echo ($value['status'] ? '<a data-group="' . $value['aro_id'] . '" id="id-' . $value['id'] . '"  class="btn btn-xs btn-allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a data-group="' . $value['aro_id'] . '" id="id-' . $value['id'] . '" class="btn btn-xs btn-disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
                             echo "</td>";
                         }
                     }

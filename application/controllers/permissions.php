@@ -160,6 +160,31 @@ class Permissions extends CI_Controller {
         echo json_encode($result);
     }
 
+    /*
+     * ajax_permissionall
+     */
+
+    public function ajax_permissionall() {
+        $data = array(
+            'id' => $this->input->post('id'),
+            'status' => $this->input->post('status')
+        );
+        if ($data['status'] == 'allowall') {
+            $stat = 1;
+        } else {
+            $stat = 0;
+        }
+        $this->db->where('aro_id', $data['id']);
+        $this->db->set('status', $stat);  //set datetime for modified
+        $this->db->update('aros_acos');
+        $result = array(
+            'status' => $data['status'],
+            'message' => 'The type has been saved',
+            'id' => $data['id']
+        );
+        echo json_encode($result);
+    }
+
     /**
      * Join Group and aros
      * @return void
@@ -184,7 +209,7 @@ class Permissions extends CI_Controller {
             return FALSE;
         }
     }
-    
+
     /**
      * exist aros method     
      * @return void
