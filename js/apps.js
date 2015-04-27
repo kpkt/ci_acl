@@ -12,12 +12,9 @@ $(document).ready(function () {
     });
     $(".btn-allow-all, .btn-disallow-all").bind('focus, click', function () {
         var id = this.id.split('-');
-        console.log(id[1]);
-        if ($("#id-" + id[1]).hasClass('btn-allow-all')) {
-            //$("#id-" + id[1]).removeClass('btn-allow-all').addClass('btn-disallow-all');
+        if ($(this).hasClass('btn-allow-all')) {
             myUpdateAll(id[1], 'allowall');
         } else {
-            //$("#id-" + id[1]).removeClass('btn-disallow-all').addClass('btn-allow-all');
             myUpdateAll(id[1], 'disallowall');
         }
     });
@@ -37,7 +34,6 @@ $(document).ready(function () {
                 } else {
                     $('#id-' + r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
                 }
-
             }
         });
     }
@@ -51,13 +47,23 @@ $(document).ready(function () {
                 'status': status
             },
             success: function (r) {
+
                 if (r.status == 'allowall') {
-                    $(".btn-disallow").attr('data-group', r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>');
-                    $(".btn-disallow").attr('data-group', r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>');
+                    $(".btn-allow, .btn-disallow").each(function (index) {//list all element with class ".btn-allow, .btn-disallow"
+                        var idBtn = $(this).attr('id').split('-');
+                        if (idBtn[2] == r.id) { //filter only element id equal to id roles                  
+                            $(this).html('<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>');
+                            $(this).removeClass('btn-disallow').addClass('btn-allow');
+                        }
+                    });
                 } else {
-                    $(".btn-allow").attr('data-group', r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
-                    $(".btn-disallow").attr('data-group', r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
-                    //$('#id-' + r.id).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
+                    $(".btn-allow, .btn-disallow").each(function (index) {//list all element with class ".btn-allow, .btn-disallow"
+                        var idBtn = $(this).attr('id').split('-');
+                        if (idBtn[2] == r.id) {//filter only element id equal to id roles
+                            $(this).html('<span aria-hidden="true" class="glyphicon glyphicon-remove"></span>');
+                            $(this).removeClass('btn-allow').addClass('btn-disallow');
+                        }
+                    });
                 }
 
             }

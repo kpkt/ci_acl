@@ -9,6 +9,7 @@
         </tr>
         <tr class="warning">
             <td>All</td>
+            <div data-groups="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'></div>
             <?php foreach ($groups as $key => $value) {
                 ?>
                 <td class="text-center">
@@ -35,7 +36,7 @@
                     foreach ($arosacos as $key => $value) {
                         if ($value['aco_id'] == $aco['id']) {
                             echo "<td class=\"text-center\">";
-                            echo ($value['status'] ? '<a data-group="' . $value['aro_id'] . '" id="id-' . $value['id'] . '"  class="btn btn-xs btn-allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a data-group="' . $value['aro_id'] . '" id="id-' . $value['id'] . '" class="btn btn-xs btn-disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
+                            echo ($value['status'] ? '<a id="id-' . $value['id'] . '-'.$value['aro_id'].'"  class="btn btn-xs btn-allow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></a>' : '<a id="id-' . $value['id'] . '-'.$value['aro_id'].'"  class="btn btn-xs btn-disallow" href="#"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></a>');
                             echo "</td>";
                         }
                     }
